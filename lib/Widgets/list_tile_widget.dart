@@ -6,12 +6,14 @@ class ListTileWidget extends StatelessWidget {
   final bool taskCompleted;
   final Function(bool?)? onChanged;
   final Function(BuildContext)? deleteTask;
+  final Function(BuildContext)? editTask;
   const ListTileWidget({
     super.key,
     required this.taskName,
     required this.taskCompleted,
     this.onChanged,
     required this.deleteTask,
+    required this.editTask,
   });
 
   @override
@@ -19,6 +21,17 @@ class ListTileWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 25, left: 25, right: 25),
       child: Slidable(
+        startActionPane: ActionPane(
+          motion: StretchMotion(),
+          children: [
+            SlidableAction(
+              onPressed: editTask,
+              backgroundColor: Colors.purple,
+              icon: Icons.edit,
+              borderRadius: BorderRadius.circular(25),
+            ),
+          ],
+        ),
         endActionPane: ActionPane(
           motion: StretchMotion(),
           children: [
