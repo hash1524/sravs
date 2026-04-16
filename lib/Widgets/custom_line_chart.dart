@@ -25,6 +25,8 @@ class _CustomLineChartState extends State<CustomLineChart> {
             borderData: _buildBorderData(),
             titlesData: _buildTitlesData(),
           ),
+          duration: Duration(milliseconds: 500),
+          //Duration is the property that defines the time it takes for the change of state of the chart to reflect once data is changed or added or deleted
         ),
       ),
     );
