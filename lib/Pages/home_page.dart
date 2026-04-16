@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      // appBar: AppBar(title: Text('Sravs'),),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -17,15 +18,29 @@ class HomePage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: SizedBox.expand(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(child: _chart1(screenWidth, screenHeight)),
-                SizedBox(child: _chart1(screenWidth, screenHeight)),
-                SizedBox(child: _chart1(screenWidth, screenHeight)),
-              ],
-            ),
+        child: SizedBox(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(child: _chart1(screenWidth, screenHeight)),
+                    SizedBox(child: _chart1(screenWidth, screenHeight)),
+                    SizedBox(child: _chart1(screenWidth, screenHeight)),
+                  ],
+                ),
+              ),
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(child: _chart1(screenWidth, screenHeight)),
+                    SizedBox(child: _chart1(screenWidth, screenHeight)),
+                    SizedBox(child: _chart1(screenWidth, screenHeight)),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),

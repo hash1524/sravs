@@ -13,20 +13,23 @@ class CustomLineChart extends StatefulWidget {
 class _CustomLineChartState extends State<CustomLineChart> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
-      child: GlassContainer(
-        width: MediaQuery.of(context).size.width * 0.4,
-        height: MediaQuery.of(context).size.height * 0.4,
-        child: LineChart(
-          LineChartData(
-            lineBarsData: [_buildLineChartBarData()],
-            gridData: _buildGridData(),
-            borderData: _buildBorderData(),
-            titlesData: _buildTitlesData(),
+    return Padding(
+      padding: const EdgeInsets.only(top:25.0),
+      child: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
+        child: GlassContainer(
+          width: MediaQuery.of(context).size.width * 0.4,
+          height: MediaQuery.of(context).size.height * 0.4,
+          child: LineChart(
+            LineChartData(
+              lineBarsData: [_buildLineChartBarData()],
+              gridData: _buildGridData(),
+              borderData: _buildBorderData(),
+              titlesData: _buildTitlesData(),
+            ),
+            duration: Duration(milliseconds: 500),
+            //Duration is the property that defines the time it takes for the change of state of the chart to reflect once data is changed or added or deleted
           ),
-          duration: Duration(milliseconds: 500),
-          //Duration is the property that defines the time it takes for the change of state of the chart to reflect once data is changed or added or deleted
         ),
       ),
     );
@@ -41,7 +44,7 @@ class _CustomLineChartState extends State<CustomLineChart> {
   }
 
   FlGridData _buildGridData() {
-    return FlGridData(show: true);
+    return FlGridData(show: false);
   }
 
   FlBorderData _buildBorderData() {
@@ -49,6 +52,30 @@ class _CustomLineChartState extends State<CustomLineChart> {
   }
 
   FlTitlesData _buildTitlesData() {
-    return FlTitlesData(show: true);
+    return FlTitlesData(
+      show: true,
+      bottomTitles: AxisTitles(
+        sideTitles: SideTitles(
+          showTitles: true,
+          reservedSize: 25,
+          getTitlesWidget: (value, meta) {
+            switch (value.toInt()) {
+              case 1:
+                return Text('Jan');
+              case 6:
+                return Text('May');
+              case 10:
+                return Text('Oct');
+              default:
+                return Container();
+            }
+          },
+        ),
+      ),
+      // leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true)),
+      // bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: true)),
+      // rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+      // topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+    );
   }
 }
