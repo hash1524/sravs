@@ -39,6 +39,12 @@ class _ListWidgetState extends State<ListWidget> {
 
   final _controller = TextEditingController();
 
+  void deleteTask(int index){
+    setState(() {
+      tasks.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -60,6 +66,7 @@ class _ListWidgetState extends State<ListWidget> {
                         taskName: tasks[index][0],
                         taskCompleted: tasks[index][1],
                         onChanged: (value) => checkBoxChanged(value, index),
+                        deleteTask: (context)=>deleteTask(index),
                       );
                     },
                   ),
