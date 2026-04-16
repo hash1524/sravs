@@ -1,14 +1,13 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:sravs/Widgets/custom_line_chart.dart';
+import 'package:sravs/Widgets/list_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       // appBar: AppBar(title: Text('Sravs'),),
       body: Container(
@@ -21,22 +20,26 @@ class HomePage extends StatelessWidget {
         child: SizedBox(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(child: _chart1(screenWidth, screenHeight)),
-                    SizedBox(child: _chart1(screenWidth, screenHeight)),
-                    SizedBox(child: _chart1(screenWidth, screenHeight)),
+                    SizedBox(child: _chart1()),
+                    SizedBox(child: _chart1()),
+                    SizedBox(child: _chart1()),
                   ],
                 ),
               ),
               SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(child: _chart1(screenWidth, screenHeight)),
-                    SizedBox(child: _chart1(screenWidth, screenHeight)),
-                    SizedBox(child: _chart1(screenWidth, screenHeight)),
+                    // SizedBox(child: _chart1(screenWidth, screenHeight)),
+                    // SizedBox(child: _chart1(screenWidth, screenHeight)),
+                    // SizedBox(child: _chart1(screenWidth, screenHeight)),
+                    SizedBox(child:_list1()),
+                    // SizedBox(child:_list1()),
+                    // SizedBox(child:_list1()),
                   ],
                 ),
               ),
@@ -47,7 +50,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _chart1(double screenWidth, double screenHeight) {
+  Widget _chart1() {
     return CustomLineChart(
       data: [
         FlSpot(1, 1),
@@ -93,5 +96,9 @@ class HomePage extends StatelessWidget {
         FlSpot(41, 1),
       ],
     );
+  }
+
+  Widget _list1() {
+    return ListWidget();
   }
 }

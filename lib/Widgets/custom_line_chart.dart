@@ -72,10 +72,6 @@ class _CustomLineChartState extends State<CustomLineChart> {
           },
         ),
       ),
-      // leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true)),
-      // bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: true)),
-      // rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-      // topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
     );
   }
 }
